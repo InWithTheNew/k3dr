@@ -1,0 +1,3 @@
+k3d cluster create dev-cluster --port 8080:80@loadbalancer --port 8443:443@loadbalancer --api-port 6443 --servers 1 --agents 3 --k3s-arg "--tls-san=$(hostname)"@loadbalancer
+k3d kubeconfig print dev-cluster | sed "s/0.0.0.0/$(hostname)/g" >> ~/.kube/config
+
